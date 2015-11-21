@@ -1,0 +1,110 @@
+/**
+ * Created by A6252532 on 20/11/2015.
+
+    Magic-Search style sheet
+
+ */
+
+/**
+ Main container : must be hidden
+ */
+#magic-search {
+    display: none;
+    margin: 10px;
+    width: 250px;
+    /* Font */
+    font: 13px Arial, Helvetica, sans-serif;
+    /* */
+    position:fixed;
+    top:1px;
+    float: top;
+    right:0;
+    z-index:9999;
+    /* */
+    /*
+    background-color: white;
+    border:1px solid lightgray;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px #888888;
+    */
+}
+
+/* the list composing the menu */
+#magic-search ul {
+    margin:0px 0px 6px 0px;
+    padding-right: 10px;
+}
+
+/* list item style */
+#magic-search li {
+    list-style: none;
+}
+
+/* Each links anchors */
+#magic-search ul li a {
+    display:block;
+    border:1px solid white;
+    background-color:#db0011;
+    border-left:6px solid red;
+    text-decoration:none;
+    color:#ccc;
+
+    padding:5px 5px 5px 5px;
+
+    border-radius: 4px;
+}
+
+/* metasearch input */
+#magic-search ul li input {
+    margin: 0em;
+    font: 13px Arial;
+    text-rendering: auto;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+
+    border-radius: 4px;
+}
+
+
+/* item */
+#magic-search ul li a:hover {
+    cursor: pointer;
+    background-color: white;
+    color:red;
+}
+
+#closeButton {
+    position:relative;
+    float:right;
+    top:-1px;
+    display:block;
+    color: white;
+    background-color: red;
+    border:2px solid white;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px #888888;
+
+    width:20px;
+    text-align: center;
+    font-weight: bold;
+    margin-right: 1px;
+    font: 15px Arial, Helvetica, Consolas;
+}
+
+#closeButton:hover {
+    cursor: pointer;
+    background-color: white;
+    color:red;
+}
+
+/**
+    Style of the magic-search
+*/
+.magic-search {
+
+}
