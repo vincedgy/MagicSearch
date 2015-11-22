@@ -10,7 +10,10 @@
     magicsearch.CONTAINER_NAME = "#magic-search";
     magicsearch.ATTR_FOR_REF_MENU = "data-ref-menu";
     magicsearch.PATTERN_FOR_HREF = "lien";
-    magicsearch.SHOW_DELAY = 500;
+    magicsearch.SHOW_DIV_DELAY = 500;
+    magicsearch.SHOW_ITEM_DELAY = 100;
+    magicsearch.QUESTION_MARK = "?";
+    magicsearch.CLOSING_MARK = "X";
     magicsearch.HTML_CLOSE_BUTTON = "";
 
     // Default fake content
@@ -60,37 +63,44 @@
     magicsearch.init = function () {
         // Cache the Window object and DOM objects
         var $window = $(window);
+        // Get the main container
         var $container = $(magicsearch.CONTAINER_NAME);
+        // Content of magicsearch
         var $containerList, $containerMetaSearch, $closeButton;
-        /* Verify div  #magic-search exists */
-        if ( $container.length ) {
-            /* Create objects */
+        // We need to have something to do : a content for magicsearch to display
+        if ( $container.length > 0) {
+            // Fresh content
             $container.empty();
+            // Call buildContent
             magicsearch.buildContent($container);
+
+            /* Create objects */
             // Close button
-            $closeButton = $container.append('<div id="closeButton" title="Cliquez pour utiliser le menu rapide !">?</div>').find("#closeButton");
-            // Create ul & MetaSearch input
-            $containerMetaSearch = $container.append('<ul><li><input type="text" id="metaSearch"/></li></ul><ul></ul>').find("#metaSearch");
+            $closeButton = $container.append('<div id="closeButton" title="Cliquez pour utiliser le menu rapide !">'+magicsearch.QUESTION_MARK+'</div>').find("#closeButton");
+            // Create ul, MetaSearch input, the list of items
+            $containerMetaSearch = $container.append('<ul><li><input type="text" id="metaSearch" placeholder="Que cherchez vous ?"/></li></ul><ul></ul>').find("#metaSearch");
             $containerList = $container.find('ul:last');
-            // Append links in dyna menu
+
+            // Append item's list in magicsearch menu
+            var item = {};
             for (var i = 0; i < magicsearch.content.length; i++) {
-                var item = magicsearch.content[i];
-                $containerList.append('<li class="item"><a href="' + item.href +'"><span class="item">'+item.title+'</span></a></li>');
+                item = magicsearch.content[i];
+                $containerList.append('<li><a href="' + item.href +'"><span class="item-title">'+item.title+'</span></a></li>');
             }
 
             /* Define closebutton action */
             $closeButton.click(function (event) {
                 var that = $(this);
                 event.preventDefault();
-                if ($(this).text() === "X") {
-                    $containerList.delay(100).fadeOut("slow");
-                    $containerMetaSearch.delay(100).fadeOut("slow");
-                    $(this).text("?");
+                if ($(this).text() === magicsearch.CLOSING_MARK ) {
+                    $containerList.delay(magicsearch.SHOW_ITEM_DELAY).fadeOut("fast");
+                    $containerMetaSearch.delay(magicsearch.SHOW_ITEM_DELAY).fadeOut("fast");
+                    $(this).text(magicsearch.QUESTION_MARK);
                 } else {
-                    $containerList.delay(100).fadeIn("slow");
-                    $containerMetaSearch.delay(100).fadeIn("slow");
+                    $containerList.delay(magicsearch.SHOW_ITEM_DELAY).fadeIn("fast");
+                    $containerMetaSearch.delay(magicsearch.SHOW_ITEM_DELAY).fadeIn("fast");
                     $containerMetaSearch.val("");
-                    $(this).text("X");
+                    $(this).text(magicsearch.CLOSING_MARK);
                 }
             });
 
@@ -122,7 +132,7 @@
                     return;
                 });
 
-            /* Define display after SHOW_DELAY is timedout*/
+            /* Define display after SHOW_DIV_DELAY is timedout*/
             setTimeout(
                 function() {
                     $containerList.hide();
@@ -130,7 +140,7 @@
                     $container.show();
                     $closeButton.fadeIn("slow");
                 }
-                ,magicsearch.SHOW_DELAY);
+                ,magicsearch.SHOW_DIV_DELAY);
         }
     };
     /* Launcher : when DOM is ready */

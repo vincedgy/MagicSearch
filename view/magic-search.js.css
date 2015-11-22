@@ -11,7 +11,9 @@
 #magic-search {
     display: none;
     margin: 10px;
-    width: 250px;
+    width: 25%;
+    min-width: 250px;
+    max-width: 350px;
     /* Font */
     font: 13px Arial, Helvetica, sans-serif;
     /* */
@@ -21,37 +23,58 @@
     right:0;
     z-index:9999;
     /* */
-    /*
-    background-color: white;
-    border:1px solid lightgray;
-    border-radius: 10px;
-    box-shadow: 2px 2px 2px #888888;
-    */
+
 }
 
 /* the list composing the menu */
 #magic-search ul {
     margin:0px 0px 6px 0px;
-    padding-right: 10px;
+    padding-right: 0px;
 }
 
 /* list item style */
 #magic-search li {
     list-style: none;
+    margin:0px 0px 2px 0px;
 }
 
 /* Each links anchors */
 #magic-search ul li a {
     display:block;
-    border:1px solid white;
-    background-color:#db0011;
-    border-left:6px solid red;
-    text-decoration:none;
-    color:#ccc;
 
-    padding:5px 5px 5px 5px;
+    background-color:#db0011;
+
+    border-left:6px solid red;
+    border-right:1px solid white;
+    border-top:1px solid white;
+    border-bottom:1px solid white;
+
+    text-decoration:none;
+    text-align: left;
+    color:#eee;
+
+    padding:8px 8px 5px 5px;
 
     border-radius: 4px;
+    background-image:linear-gradient(red, #dd4323);
+
+    box-shadow: 2px 2px 2px #888888;
+}
+
+/* item */
+#magic-search ul li a:hover {
+    cursor: pointer;
+    background-color: white;
+
+    color:red;
+    border-left:6px solid red;
+    border-right:1px solid lightgray;
+    border-top:1px solid lightgray;
+    border-bottom:1px solid lightgray;
+    background-image:linear-gradient(white,#DDDDDD);
+
+    margin-left: -6px;
+    margin-right: 6px;
 }
 
 /* metasearch input */
@@ -70,14 +93,7 @@
     border-radius: 4px;
 }
 
-
-/* item */
-#magic-search ul li a:hover {
-    cursor: pointer;
-    background-color: white;
-    color:red;
-}
-
+/* Toggle Button */
 #closeButton {
     position:relative;
     float:right;
@@ -87,7 +103,7 @@
     background-color: red;
     border:2px solid white;
     border-radius: 10px;
-    box-shadow: 2px 2px 2px #888888;
+    box-shadow: 1px 1px 1px #888888;
 
     width:20px;
     text-align: center;
@@ -98,13 +114,23 @@
 
 #closeButton:hover {
     cursor: pointer;
-    background-color: white;
-    color:red;
+    /* background-color: white; */
+    /* color:red; */
+    /* border:2px solid red; */
+    /* click illusion */
+    top:0px;
+    right:-1px;
+    box-shadow: 0px 0px 1px #888888;
 }
 
 /**
-    Style of the magic-search
+    Style of the magic-search div
 */
 .magic-search {
+
+        background-color: white;
+        border:1px solid lightgray;
+        border-radius: 10px;
+        box-shadow: 2px 2px 2px #888888;
 
 }
